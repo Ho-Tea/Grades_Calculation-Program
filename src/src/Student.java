@@ -1,6 +1,9 @@
-import java.util.ArrayList;
+
+import Major.*;
+import Score.*;
+import Subject.Subject;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Student {
@@ -10,30 +13,31 @@ public class Student {
     HashMap<String, Score> score;
     Subject subject;
 
-    Student(int sid, String name, String major){
+    Student(int sid, String name, String majord){
         this.sid = sid;
         this.name = name;
-        divisionMajor(major);
+        divisionMajor(majord);
         score = new HashMap<>();
+        subject = new Subject();
     }
 
-    void divisionMajor(String major){
-        if(major.equals("국어국문학과"))
+    void divisionMajor(String majord){
+        if(majord.equals("국어국문학과"))
             this.major = new LanguageMajor();
-        else if (major.equals("컴퓨터공학과"))
+        else if (majord.equals("컴퓨터공학과"))
             this.major = new ComputerMajor();
         else
             System.out.println("전공의 이름이 맞지 않습니다");
     }
 
     void enterScore(int math, int korean){
-        if(major.getVitalSubject().equals(subject.getMath())) {
-            score.put(major.getVitalSubject(), new VitalScore(math));
-            score.put(major.getNormalSubject(),new NormalScore(korean));
-        }
-        else if (major.getVitalSubject().equals(subject.getKorean())){
+        if(major.getVitalSubject().equals(subject.getKorean())) {
             score.put(major.getVitalSubject(), new VitalScore(korean));
             score.put(major.getNormalSubject(),new NormalScore(math));
+        }
+        else if (major.getVitalSubject().equals(subject.getMath())){
+            score.put(major.getVitalSubject(), new VitalScore(math));
+            score.put(major.getNormalSubject(),new NormalScore(korean));
     }
         }
 

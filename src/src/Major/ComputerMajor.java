@@ -1,15 +1,20 @@
-public class LanguageMajor implements Major{
+package Major;
+
+import Subject.*;
+public class ComputerMajor implements Major {
     private String vital;
     private String normal;
     private Subject subject;
-    LanguageMajor(){
-        vital = subject.getKorean();
-        normal = subject.getMath();
+    public ComputerMajor(){
+        subject = new Subject();
+        vital = subject.getMath();
+        normal = subject.getKorean();
     }
     @Override
     public String getVitalSubject() {
         return vital;
     }
+
 
     @Override
     public void changeVitalSubject(String newvital) {
@@ -20,4 +25,5 @@ public class LanguageMajor implements Major{
     public String getNormalSubject() {
         return normal;
     }
+
 }
